@@ -12,6 +12,7 @@ namespace AnimationProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D image;
+        Sprite sprite;
 
         public Game1()
         {
@@ -34,7 +35,6 @@ namespace AnimationProject
             // TODO: Add your initialization logic here
 
             IsMouseVisible = true;
-
             
             base.Initialize();
         }
@@ -49,6 +49,7 @@ namespace AnimationProject
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
              image = Content.Load<Texture2D>("Dino Sprite");
+            sprite = new Sprite(image, new Vector2(100, 100));
             
             // TODO: use this.Content to load your game content here
         }
@@ -85,8 +86,11 @@ namespace AnimationProject
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
 
+            sprite.Draw(spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
